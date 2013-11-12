@@ -16,7 +16,7 @@ cassandra12:
       - module: cassandra_refresh_db
 
 ##
-# Configures Cassandra
+# Configure Cassandra
 #
 # Depends on: Cassandra package
 ##
@@ -24,6 +24,17 @@ cassandra12:
   file:
     - managed
     - source: salt://cassandra/etc/cassandra/conf/cassandra.yaml
+    - user: cassandra
+    - group: cassandra
+    - mode: 644
+    - template: jinja
+    - require:
+      - pkg: cassandra12
+
+/etc/cassandra/conf/cassandra-env.sh:
+  file:
+    - managed
+    - source: salt://cassandra/etc/cassandra/conf/cassandra-env.sh
     - user: cassandra
     - group: cassandra
     - mode: 644
@@ -43,6 +54,8 @@ cassandra:
     - require: 
       - pkg: cassandra12
       - file: /etc/cassandra/conf/cassandra.yaml
+      - file: /etc/cassandra/conf/cassandra-env.sh
     - watch:
       - file: /etc/cassandra/conf/cassandra.yaml
+      - file: /etc/cassandra/conf/cassandra-env.sh
 
