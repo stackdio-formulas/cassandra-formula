@@ -39,7 +39,7 @@ cassandra:
   service:
     - running
     - require: 
-      - pkg: cassandra12-{{pillar.cassandra.version}}-1
+      - pkg: cassandra12
       - file: /etc/cassandra/conf/cassandra.yaml
     - watch:
       - file: /etc/cassandra/conf/cassandra.yaml
