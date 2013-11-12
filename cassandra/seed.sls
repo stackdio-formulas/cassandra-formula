@@ -4,4 +4,4 @@
 # ring/cluster are seeds.
 
 include:
-  cassandra.node
+  - cassandra.node
