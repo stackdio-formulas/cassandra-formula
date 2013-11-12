@@ -15,7 +15,7 @@ cassandra_refresh_db:
     - run
     - name: pkg.refresh_db
     - require:
-      - cmd: cassandra_gpg
+      - pkgrepo: cassandra_repo
 
 {% endif %}
 
