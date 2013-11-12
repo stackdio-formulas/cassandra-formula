@@ -8,9 +8,10 @@ include:
 # Depends on: JDK6
 ##
 
-cassandra12-{{pillar.cassandra.version}}-1:
+cassandra12:
   pkg:
     - installed 
+    - version: {{ pillar.cassandra.version }}
     - require:
       - module: cassandra_refresh_db
 
