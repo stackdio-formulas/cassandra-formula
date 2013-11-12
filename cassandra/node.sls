@@ -28,6 +28,8 @@ cassandra12:
     - group: cassandra
     - mode: 644
     - template: jinja
+    - require:
+      - pkg: cassandra12
 
 ##
 # Cassandra service management
