@@ -1,0 +1,21 @@
+title: Cassandra 1.2.x Salt Formula
+description: Salt formula for installing components of Cassandra 1.2.x. Please note
+             that seed and regular nodes are the same exact thing, however, to make
+             it easy for users to pick which hosts will be seeds we have separated
+             them to easily find using the grain system in salt.
+root_path: cassandra
+components:
+  - title: Cassandra Seed Node
+    description: A seed node in the Cassandra cluster
+    sls_path: cassandra.seed
+  - title: Cassandra Regular Node
+    description: A regular node in the Cassandra cluster
+    sls_path: cassandra.node
+pillar_defaults:
+  cassandra:
+    version: 1.2.4 
+    cluster_name: MyCassandraCluster
+    landing_page: true
+    num_tokens: 256
+    rpc_address: 0.0.0.0
+    endpoint_snitch: SimpleSnitch
