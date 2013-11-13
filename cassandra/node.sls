@@ -87,9 +87,11 @@ cassandra:
       - file: /etc/cassandra/conf/cassandra-env.sh
       - file: {{ pillar.cassandra.data_file_directory }}
       - file: {{ pillar.cassandra.commitlog_directory }}
+      - file: {{ pillar.cassandra.saved_caches }}
     - watch:
       - file: /etc/cassandra/conf/cassandra.yaml
       - file: /etc/cassandra/conf/cassandra-env.sh
       - file: {{ pillar.cassandra.data_file_directory }}
       - file: {{ pillar.cassandra.commitlog_directory }}
+      - file: {{ pillar.cassandra.saved_caches }}
 
