@@ -42,6 +42,24 @@ cassandra12:
     - require:
       - pkg: cassandra12
 
+{{ pillar.cassandra.data_file_directory }}:
+  file:
+    - directory
+    - user: cassandra
+    - group: cassandra
+    - mode: 644
+    - require:
+      - pkg: cassandra12
+
+{{ pillar.cassandra.commitlog_directory }}:
+  file:
+    - directory
+    - user: cassandra
+    - group: cassandra
+    - mode: 644
+    - require:
+      - pkg: cassandra12
+
 ##
 # Cassandra service management
 #
@@ -55,7 +73,11 @@ cassandra:
       - pkg: cassandra12
       - file: /etc/cassandra/conf/cassandra.yaml
       - file: /etc/cassandra/conf/cassandra-env.sh
+      - file: {{ pillar.cassandra.data_file_directory }}
+      - file: {{ pillar.cassandra.commitlog_directory }}
     - watch:
       - file: /etc/cassandra/conf/cassandra.yaml
       - file: /etc/cassandra/conf/cassandra-env.sh
+      - file: {{ pillar.cassandra.data_file_directory }}
+      - file: {{ pillar.cassandra.commitlog_directory }}
 
