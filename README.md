@@ -18,13 +18,13 @@ seed node hostnames.
 to ensure that seeds are available before regular nodes and OpsCenter attempts to
 connect.
 
-### Cassandra Node
+### Regular Cassandra Node
 
 This component will provision a machine as a regular Cassandra node. They will be
 configured to connect to Seed Nodes, so their order must be higher than any seed
 nodes' order.
 
-### OpsCenter Node
+### OpsCenter
 
 [Optional]
 
