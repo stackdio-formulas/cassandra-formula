@@ -49,7 +49,10 @@ cassandra12:
     - group: cassandra
     - mode: 755
     - makedirs: true
-    - recurse: true
+    - recurse:
+      - user
+      - group
+      - mode
     - require:
       - pkg: cassandra12
 
@@ -60,7 +63,10 @@ cassandra12:
     - group: cassandra
     - mode: 755
     - makedirs: true
-    - recurse: true
+    - recurse:
+      - user
+      - group
+      - mode
     - require:
       - pkg: cassandra12
 
@@ -71,7 +77,10 @@ cassandra12:
     - group: cassandra
     - mode: 755
     - makedirs: true
-    - recurse: true
+    - recurse:
+      - user
+      - group
+      - mode
     - require:
       - pkg: cassandra12
 
