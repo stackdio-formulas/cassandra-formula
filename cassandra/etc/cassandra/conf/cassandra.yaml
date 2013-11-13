@@ -1,5 +1,5 @@
-# Build CSV list of seed node FQDNs
-{% set seeds="".join(salt['publish.publish']('G@stack_id:' ~ grains.stack_id ~ ' and G@roles:cassandra.seed', 'grains.get', 'fqdn', 'compound').values()) %}
+# Grab the private IPs of all seed nodes
+{% set seeds=salt['publish.publish']('G@stack_id:' ~ grains.stack_id ~ ' and G@roles:cassandra.seed', 'grains.get', 'ip_interfaces:eth0', 'compound').values() %}
 
 # Cassandra storage config YAML
 
@@ -227,7 +227,8 @@ seed_provider:
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-          - seeds: {{ seeds }}
+          # Build the CSV of seed nodes from the list set at the top
+          - seeds: {% for seed in seeds %}{{ seed[0] }}{% if not loop.last %},{% endif %}{% endfor %}
 
 # emergency pressure valve: each time heap usage after a full (CMS)
 # garbage collection is above this fraction of the max, Cassandra will
@@ -318,7 +319,8 @@ ssl_storage_port: 7001
 # address associated with the hostname (it might not be).
 #
 # Setting this to 0.0.0.0 is always wrong.
-listen_address: ''
+# Bind to the local/private IP of the machine
+listen_address: '{{ grains.ip_interfaces.eth0[0] }}'
 
 # Address to broadcast to other Cassandra nodes
 # Leaving this blank will set it to the same value as listen_address
