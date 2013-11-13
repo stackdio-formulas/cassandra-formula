@@ -47,7 +47,7 @@ cassandra12:
     - directory
     - user: cassandra
     - group: cassandra
-    - mode: 644
+    - mode: 755
     - makedirs: true
     - require:
       - pkg: cassandra12
@@ -57,7 +57,7 @@ cassandra12:
     - directory
     - user: cassandra
     - group: cassandra
-    - mode: 644
+    - mode: 755
     - makedirs: true
     - require:
       - pkg: cassandra12
