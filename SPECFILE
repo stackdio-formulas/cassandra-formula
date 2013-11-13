@@ -11,6 +11,9 @@ components:
   - title: Cassandra Regular Node
     description: A regular node in the Cassandra cluster
     sls_path: cassandra.node
+  - title: OpsCenter Community
+    description: The OpsCenter component of the cassandra formula
+    sls_path: cassandra.opscenter
 pillar_defaults:
   cassandra:
     version: 1.2.4-1
@@ -21,3 +24,6 @@ pillar_defaults:
     endpoint_snitch: SimpleSnitch
     java_opts:
       xss: 280k
+    opscenter:
+      port: 8888
+      interface: 0.0.0.0
