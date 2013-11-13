@@ -62,6 +62,16 @@ cassandra12:
     - require:
       - pkg: cassandra12
 
+{{ pillar.cassandra.saved_caches}}:
+  file:
+    - directory
+    - user: cassandra
+    - group: cassandra
+    - mode: 755
+    - makedirs: true
+    - require:
+      - pkg: cassandra12
+
 ##
 # Cassandra service management
 #

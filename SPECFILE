@@ -24,6 +24,7 @@ pillar_defaults:
     endpoint_snitch: SimpleSnitch
     data_file_directory: /mnt/cassandra/data
     commitlog_directory: /mnt/cassandra/commitlog
+    saved_caches: /mnt/cassandra/saved_caches
     java_opts:
       xss: 280k
     opscenter:
