@@ -62,7 +62,7 @@ cassandra12:
     - require:
       - pkg: cassandra12
 
-{{ pillar.cassandra.saved_caches}}:
+{{ pillar.cassandra.saved_caches_directory }}:
   file:
     - directory
     - user: cassandra
@@ -87,11 +87,11 @@ cassandra:
       - file: /etc/cassandra/conf/cassandra-env.sh
       - file: {{ pillar.cassandra.data_file_directory }}
       - file: {{ pillar.cassandra.commitlog_directory }}
-      - file: {{ pillar.cassandra.saved_caches }}
+      - file: {{ pillar.cassandra.saved_caches_directory }}
     - watch:
       - file: /etc/cassandra/conf/cassandra.yaml
       - file: /etc/cassandra/conf/cassandra-env.sh
       - file: {{ pillar.cassandra.data_file_directory }}
       - file: {{ pillar.cassandra.commitlog_directory }}
-      - file: {{ pillar.cassandra.saved_caches }}
+      - file: {{ pillar.cassandra.saved_caches_directory }}
 
