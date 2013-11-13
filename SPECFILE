@@ -19,5 +19,5 @@ pillar_defaults:
     num_tokens: 256
     rpc_address: 0.0.0.0
     endpoint_snitch: SimpleSnitch
-    java_ops:
+    java_opts:
       xss: 280k
