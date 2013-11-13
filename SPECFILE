@@ -22,6 +22,9 @@ pillar_defaults:
     num_tokens: 256
     rpc_address: 0.0.0.0
     endpoint_snitch: SimpleSnitch
+    data_file_directories:
+      - /mnt/cassandra/data
+    commitlog_directory: /mnt/cassandra/commitlog
     java_opts:
       xss: 280k
     opscenter:
