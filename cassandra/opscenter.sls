@@ -1,7 +1,7 @@
 include:
   - cassandra.repo
 
-opscenter-free:
+opscenter:
   pkg:
     - installed
     - require:
@@ -16,7 +16,7 @@ opscenter-free:
     - mode: 644
     - template: jinja
     - require:
-      - pkg: opscenter-free
+      - pkg: opscenter
 
 opscenterd:
   service:
