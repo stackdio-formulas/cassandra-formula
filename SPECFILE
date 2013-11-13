@@ -30,3 +30,4 @@ pillar_defaults:
     opscenter:
       port: 8888
       interface: 0.0.0.0
+      version: 3.2.2-1
