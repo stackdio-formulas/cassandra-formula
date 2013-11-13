@@ -1,10 +1,9 @@
 include:
   - cassandra.repo
 
-opscenter-free:
+opscenter:
   pkg:
     - installed
-    - version: {{ pillar.cassandra.opscenter.version }}
     - require:
       - module: cassandra_refresh_db
 
@@ -17,7 +16,7 @@ opscenter-free:
     - mode: 644
     - template: jinja
     - require:
-      - pkg: opscenter-free
+      - pkg: opscenter
 
 opscenterd:
   service:

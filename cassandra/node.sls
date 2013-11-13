@@ -11,7 +11,9 @@ include:
 cassandra12:
   pkg:
     - installed 
+    {% if salt['pillar.get']('cassandra:version', '') %}
     - version: {{ pillar.cassandra.version }}
+    {% endif %}
     - require:
       - module: cassandra_refresh_db
 
