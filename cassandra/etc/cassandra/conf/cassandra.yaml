@@ -1,5 +1,5 @@
 # Grab the private IPs of all seed nodes
-{% set seeds=salt['publish.publish']('G@stack_id:' ~ grains.stack_id ~ ' and G@roles:cassandra.seed', 'grains.get', 'ip_interfaces:eth0', 'compound').values() %}
+{% set seeds=salt['mine.get']('G@stack_id:' ~ grains.stack_id ~ ' and G@roles:cassandra.seed', 'grains.items', 'compound').values() %}
 
 # Cassandra storage config YAML
 
@@ -228,7 +228,7 @@ seed_provider:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
           # Build the CSV of seed nodes from the list set at the top
-          - seeds: {% for seed in seeds %}{{ seed[0] }}{% if not loop.last %},{% endif %}{% endfor %}
+          - seeds: {% for seed in seeds %}{{ seed['ip_interfaces']['eth0'][0] }}{% if not loop.last %},{% endif %}{% endfor %}
 
 # emergency pressure valve: each time heap usage after a full (CMS)
 # garbage collection is above this fraction of the max, Cassandra will
